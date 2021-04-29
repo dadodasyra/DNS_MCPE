@@ -1,0 +1,23 @@
+database:
+  type: mysql
+
+  mysql:
+    host: 127.0.0.1
+    # Avoid using the "root" user for security reasons.
+    username: dns
+    password: pass
+    schema: dns
+  # The maximum number of simultaneous SQL queries
+  # Recommended: 2 for MySQL. You may want to further increase this value if your MySQL connection is very slow.
+  worker-limit: 1
+
+default:
+  '! Histeria':
+    ip: histeria.fr
+    port: 19132
+  The Hive:
+    ip: play.hivemc.com
+    port: 19132
+  CubeCraft:
+    ip: play.cubecraft.net
+    port: 19132

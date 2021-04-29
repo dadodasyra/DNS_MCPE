@@ -16,15 +16,15 @@ use pocketmine\plugin\PluginBase;
 class dns_mcpe extends PluginBase implements Listener
 {
     public array $current = [];
-    private array $default = ["! Histeria" => ["ip" => "histeria.fr", "port" => 19132]];
+    private array $default;
     private static DataConnector $database;
 
     public function onEnable()
     {
+        $this->saveConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        self::$database = libasynql::create($this, ["type" => "mysql", "worker-limit" => 1,
-            "mysql" => ["host" => "127.0.0.1", "username" => "dns", "password" => "@)B{4Tv?Ykp58Dq9", "schema" => "dns"]],
-            ["mysql" => "mysql.sql"]);
+        $this->default = $this->getConfig()->get("default");
+        self::$database = libasynql::create($this, $this->getConfig()->get("database"), ["mysql" => "mysql.sql"]);
         self::$database->executeGeneric("init");
     }
 
