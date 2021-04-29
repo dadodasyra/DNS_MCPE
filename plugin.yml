@@ -1,0 +1,6 @@
+name: DNS_MCPE
+main: dadodasyra\dnsmcpe\dns_mcpe
+version: 1.0.0
+api: 3.0.0
+author: dadodasyra
+description: Petit "proxy" pour nos dns
